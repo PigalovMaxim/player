@@ -10,6 +10,7 @@ let currentTimeGlobal = 0;
 const audios = [
     "./audio/example-1.mp3",
     "./audio/example-2.mp3",
+    "./audio/example-3.mp3",
 ];
 
 playBtn.addEventListener('click', () => {
