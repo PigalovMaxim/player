@@ -20,10 +20,12 @@ body {
   height: 180px;
   /* background-image: url('./winterBG.jpg'); */
   border: 2px solid black;
+  z-index: 99999999;
 }
 
 .audio-wrapper audio {
   display: none;
+  
 }
 
 .controls {
@@ -36,6 +38,7 @@ body {
   padding: 10px;
   background-image: url("./images/background.png");
   background-size: cover;
+  
 }
 
 .buttons {
@@ -54,7 +57,7 @@ body {
   color: black;
   font-size: 40px;
   cursor: pointer;
-  z-index: 99999999;
+  
 }
 
 .progress {
