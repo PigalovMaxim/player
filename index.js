@@ -1,6 +1,9 @@
 const prevBtn = document.getElementById('prev');
 const nextBtn = document.getElementById('next');
 const playBtn = document.getElementById('play');
+const incValueBtn = document.getElementById('inc_volume');
+const decValueBtn = document.getElementById('dec_volume');
+const valValueBtn = document.getElementById('volume-val');
 const audio = document.getElementById('audio');
 const progress = document.querySelector('.progress-bar');
 let isPlaying = false;
@@ -18,6 +21,22 @@ playBtn.addEventListener('click', () => {
 });
 nextBtn.addEventListener('click', next);
 prevBtn.addEventListener('click', prev);
+incValueBtn.addEventListener('click', incValue);
+decValueBtn.addEventListener('click', decValue);
+
+function incValue() {
+    let volume = audio.volume;
+    if(volume + 0.1 >= 1) volume = 1; else volume += 0.1;
+    audio.volume = volume;
+    valValueBtn.innerHTML = Math.round(volume * 100);
+}
+
+function decValue() {
+    let volume = audio.volume;
+    if(volume - 0.1 <= 0) volume = 0; else volume -= 0.1;
+    audio.volume = volume;
+    valValueBtn.innerHTML = Math.round(volume * 100);
+}
 
 function play(clearTime = false) {
     isPlaying = true;
@@ -52,7 +71,6 @@ function prev() {
 function startProgress(currentTime = 0) {
     if(currentTime !== 0) audio.currentTime = currentTime;
     interval = setInterval(() => {
-        console.log('aaa');
         currentTimeGlobal = audio.currentTime;
         const progressNum = audio.currentTime / audio.duration * 100;
         progress.style.width = progressNum + '%';

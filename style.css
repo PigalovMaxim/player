@@ -78,6 +78,37 @@ body {
   transform: scale(-1, 1);
 }
 
+#volume {
+  background-image: url('./images/volume.png');
+  width: 50px;
+  height: 50px;
+}
+.volume {
+  margin-bottom: 20px;
+}
+#inc_volume, #dec_volume {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(5, 109, 179);
+  color: white;
+  border-radius: 10px;
+}
+#volume-val {
+  font-size: 25px;
+  font-weight: 700;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.volume {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
 header {
   position: absolute;
   top: 0;
