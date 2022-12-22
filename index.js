@@ -1,3 +1,7 @@
+const audioLayout = createNewAudioLayout();
+document.querySelector('.testAudioWrapper').innerHTML = '';
+document.querySelector('.testAudioWrapper').appendChild(audioLayout);
+
 const prevBtn = document.getElementById('prev');
 const nextBtn = document.getElementById('next');
 const playBtn = document.getElementById('play');
@@ -80,4 +84,63 @@ function startProgress(currentTime = 0) {
 function stopProgress() {
     if(interval) clearInterval(interval);
     interval = null;
+}
+
+function createNewAudioLayout() {
+    const result = document.createElement('div');
+    result.classList.add('audio-wrapper');
+
+    const controls = document.createElement('div');
+    controls.classList.add('controls');
+
+    const audio = document.createElement('audio');
+    audio.setAttribute('id', 'audio');
+    audio.setAttribute('src', './audio/example-1.mp3');
+
+    const buttons = document.createElement('div');
+    buttons.classList.add('buttons');
+
+    const volume = document.createElement('div');
+    volume.classList.add('volume');
+
+    const progress = document.createElement('div');
+    progress.classList.add('progress');
+
+    const progressBar = document.createElement('div');
+    progressBar.classList.add('progress-bar');
+
+    const image = document.createElement('img');
+    image.src = './images/snowflake.png';
+
+    progressBar.appendChild(image);
+    progress.appendChild(progressBar);
+
+    [{name: 'prev'}, {name: 'play'}, {name: 'next'}].forEach(value => {
+        const btn = document.createElement('button');
+        btn.setAttribute('id', value.name);
+        buttons.appendChild(btn);
+    });
+
+    const inc_volumeBtn = document.createElement('button');
+    inc_volumeBtn.setAttribute('id', 'inc_volume');
+    inc_volumeBtn.innerHTML = '+';
+    volume.appendChild(inc_volumeBtn);
+
+    const volumeValBtn = document.createElement('label');
+    volumeValBtn.setAttribute('id', 'volume-val');
+    volumeValBtn.innerHTML = '100';
+    volume.appendChild(volumeValBtn);
+
+    const dec_volumeBtn = document.createElement('button');
+    dec_volumeBtn.setAttribute('id', 'dec_volume');
+    dec_volumeBtn.innerHTML = '-';
+    volume.appendChild(dec_volumeBtn);
+
+    controls.appendChild(buttons);
+    controls.appendChild(volume);
+    controls.appendChild(progress);
+    result.appendChild(controls);
+    result.appendChild(audio);
+
+    return result
 }
